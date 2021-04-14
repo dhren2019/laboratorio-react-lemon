@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, generatePath } from "react-router-dom";
-//import { useDebounce } from "use-debounce";
 
 interface MemberEntity {
   id: string;
@@ -35,24 +34,13 @@ export const ListPage: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const { newFilter , newSetFilter} = React.useContext(MyfilterContext); 
   const [filter, setFilter] = React.useState(newFilter);
-  //const [debouncedFilter] = useDebounce(filterContext.filter, 2000);
 
   const handleFilter = (e) => {
     e.preventDefault();
     newSetFilter(filter);
   };
 
-  /*
-  const searchOrganization = () => {
-    fetch(`https://api.github.com/orgs/${filterContext.newFilter}/members`)
-      .then((response) => response.json())
-      .then((json) => setMembers(json))
-      .catch(() => {
-        alert("La compañia no existe, volverás al listado principal");
-        window.location.href = "/list";
-      });
-  };
-   */
+ 
 
   React.useEffect(() => {
     fetch(`https://api.github.com/orgs/${filterContext.newFilter}/members`)
@@ -80,7 +68,7 @@ export const ListPage: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {/* Le hacemos un map a members, que previamente nos viene de la api de Github */}
+          {}
           {members.map((member) => (
             <tr>
               <td>
@@ -101,7 +89,7 @@ export const ListPage: React.FC = () => {
               </td>
             </tr>
           ))}
-          {/* Fin del map */}
+          {}
         </tbody>
       </table>
     </>
